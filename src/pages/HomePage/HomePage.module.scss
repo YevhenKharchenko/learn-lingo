@@ -1,0 +1,79 @@
+.hero {
+  display: flex;
+  gap: 24px;
+}
+
+.heroWrapper {
+  padding: 98px 64px;
+  background-color: #f8f8f8;
+  border-radius: 30px;
+  flex-grow: 1;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.16667;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 32px;
+  width: 548px;
+}
+
+.langSpan {
+  background-color: #fbe9ba;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 64px;
+  width: 471px;
+}
+
+.advantages {
+  padding-top: 24px;
+}
+
+.advantagesList {
+  border: 1.5px dashed #f4c550;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  gap: 100px;
+}
+
+.advItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.count {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14286;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.span {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: rgba(18, 20, 23, 0.7);
+  display: block;
+}
