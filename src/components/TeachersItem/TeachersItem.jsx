@@ -26,7 +26,7 @@ const TeachersItem = ({ data }) => {
         name={data.name + ' ' + data.surname}
       />
     );
-  }, [setModal, closeModal]);
+  }, [setModal, closeModal, data.avatar_url, data.name, data.surname]);
 
   const handleReadMoreBtnClick = () => {
     setIsShowMore(true);

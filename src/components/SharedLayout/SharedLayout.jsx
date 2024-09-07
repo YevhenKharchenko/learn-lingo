@@ -6,10 +6,10 @@ import AppBar from '../AppBar/AppBar.jsx';
 
 const SharedLayout = ({ children }) => {
   return (
-    <Container className={s.container}>
+    <>
       <AppBar />
       <Suspense fallback={<HourglassLoader />}>{children}</Suspense>
-    </Container>
+    </>
   );
 };
 

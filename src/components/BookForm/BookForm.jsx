@@ -12,16 +12,16 @@ const BookForm = ({ avatar, name, closeModal }) => {
           <use xlinkHref={`${sprite}#icon-x`}></use>
         </svg>
       </button>
-      <h2 className={s.formTitle}>Make an appointment with a teacher</h2>
+      <h2 className={s.formTitle}>Book a lesson with a tutor</h2>
       <p className={s.formText}>
         You are just one step away from unlocking your language potential! Fill out the short form
-        below to book your personal session with a professional language teacher. We ensure a
+        below to book your personal lesson with a professional language tutor. We ensure a
         customized approach and respect for your learning pace.
       </p>
       <div className={s.infoWrapper}>
         <img src={avatar} alt="Avatar" width="44" height="44" className={s.img} />
         <div className={s.nameWrapper}>
-          <p className={s.nameText}>Your teacher</p>
+          <p className={s.nameText}>Your tutor</p>
           <p className={s.teacherName}>{name}</p>
         </div>
       </div>

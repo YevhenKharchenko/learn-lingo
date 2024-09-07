@@ -1,0 +1,48 @@
+.container {
+  padding: 64px;
+  background-color: #fff;
+  border-radius: 30px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeIcon {
+  stroke: #121417;
+}
+
+.loginTitle {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.loginText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 40px;
+  max-width: 438px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 22px;
+}
