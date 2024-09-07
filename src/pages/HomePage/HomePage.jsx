@@ -2,8 +2,11 @@ import Button from '../../shared/components/Button/Button.jsx';
 import mac from '../../assets/images/mac.png';
 import mac2x from '../../assets/images/mac.png';
 import s from './HomePage.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <main>
       <section className={s.hero}>
@@ -16,7 +19,7 @@ const HomePage = () => {
             language proficiency to new heights by connecting with highly qualified and experienced
             tutors.
           </p>
-          <Button title="Get started" />
+          <Button title="Get started" onClick={() => navigate('/teachers')} />
         </div>
         <div>
           <picture>
