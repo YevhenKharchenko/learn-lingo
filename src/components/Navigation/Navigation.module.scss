@@ -10,3 +10,19 @@
   line-height: 1.25;
   color: #121417;
 }
+
+.active {
+  position: relative;
+}
+
+.active::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background-color: #f4c550;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}

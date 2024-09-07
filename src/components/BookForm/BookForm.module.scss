@@ -1,0 +1,110 @@
+.container {
+  padding: 64px;
+  background-color: #fff;
+  border-radius: 24px;
+  max-width: 600px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeIcon {
+  stroke: #121417;
+}
+
+.formTitle {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #191a15;
+  margin-bottom: 20px;
+}
+
+.formText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(25, 26, 21, 0.5);
+  margin-bottom: 40px;
+}
+
+.infoWrapper {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.img {
+  border-radius: 100px;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nameText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8a8a89;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #191a15;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.telInput {
+  width: 232px !important;
+}
+
+.textarea {
+  resize: none;
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  width: 472px;
+  height: 116px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #191a15;
+  outline: none;
+  padding: 16px 18px;
+
+  &::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #191a15;
+  }
+}
+
+.submitBtn {
+  margin-top: 24px;
+  width: 100%;
+}

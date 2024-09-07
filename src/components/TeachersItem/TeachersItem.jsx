@@ -3,11 +3,30 @@ import sprite from '../../assets/icons/sprite.svg';
 import star from '../../assets/images/star.png';
 import { addComma } from '../../utils/addComma.js';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Button from '../../shared/components/Button/Button.jsx';
+import { useModal } from '../../hooks/useModal.jsx';
+import BookForm from '../BookForm/BookForm.jsx';
 
 const TeachersItem = ({ data }) => {
   const [isShowMore, setIsShowMore] = useState(false);
+
+  const setModal = useModal();
+
+  const closeModal = useCallback(() => {
+    setModal();
+  }, [setModal]);
+
+  const openModal = useCallback(() => {
+    setModal(
+      <BookForm
+        onClose={closeModal}
+        closeModal={closeModal}
+        avatar={data.avatar_url}
+        name={data.name + ' ' + data.surname}
+      />
+    );
+  }, [setModal, closeModal]);
 
   const handleReadMoreBtnClick = () => {
     setIsShowMore(true);
@@ -109,7 +128,14 @@ const TeachersItem = ({ data }) => {
             );
           })}
         </ul>
-        {isShowMore && <Button type="button" title="Book trial lesson" className={s.formBtn} />}
+        {isShowMore && (
+          <Button
+            type="button"
+            title="Book trial lesson"
+            className={s.formBtn}
+            onClick={() => openModal()}
+          />
+        )}
       </div>
     </div>
   );

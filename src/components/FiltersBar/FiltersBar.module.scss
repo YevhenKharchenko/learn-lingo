@@ -1,0 +1,26 @@
+.filtersForm {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.selectLabel {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #8a8a89;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.langSelect {
+  width: 221px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: #121417;
+}
