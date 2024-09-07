@@ -3,12 +3,14 @@ import mac from '../../assets/images/mac.png';
 import mac2x from '../../assets/images/mac.png';
 import s from './HomePage.module.scss';
 import { useNavigate } from 'react-router-dom';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
     <main>
+      <DocumentTitle>Learn Lingo</DocumentTitle>
       <section className={s.hero}>
         <div className={s.heroWrapper}>
           <h1 className={s.title}>

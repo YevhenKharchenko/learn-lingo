@@ -3,7 +3,8 @@
   background-color: #fff;
   border-radius: 24px;
   display: flex;
-  justify-content: space-between;
+  //   justify-content: space-between;
+  gap: 48px;
 }
 
 .imgWrapper {
@@ -16,6 +17,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .img {
@@ -101,6 +103,10 @@
   transform: translateY(-50%);
 }
 
+.ratingWrapper {
+  gap: 8px;
+}
+
 .bookIcon {
   fill: transparent;
   stroke: #121417;
@@ -148,6 +154,7 @@
   color: #121417;
   text-align: left;
   margin-bottom: 32px;
+  width: 78px;
 }
 
 .levels {
@@ -175,4 +182,82 @@
   font-size: 14px;
   line-height: 1.14286;
   color: #121417;
+}
+
+.expandInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.lessonInfo {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.reviewsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reviewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewRatingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewerAvatar {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  background-color: #f2f4f7;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  color: #f4c550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviewNameWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.starWrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.reviewText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.formBtn {
+  margin-top: 32px;
+  padding: 16px 48px;
 }

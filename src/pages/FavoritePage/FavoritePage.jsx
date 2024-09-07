@@ -1,7 +1,11 @@
-import React from 'react';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 
 const FavoritePage = () => {
-  return <div></div>;
+  return (
+    <main>
+      <DocumentTitle>Favorite</DocumentTitle>
+    </main>
+  );
 };
 
 export default FavoritePage;
