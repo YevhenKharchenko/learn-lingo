@@ -3,31 +3,23 @@ import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import s from './BookForm.module.scss';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import Button from '../../shared/components/Button/Button.jsx';
 import sprite from '../../assets/icons/sprite.svg';
-
-const validationSchema = yup.object().shape({
-  form: yup.string().required('Please select a reason for learning language'),
-  name: yup.string().required('Full Name is required'),
-  email: yup.string().email('Invalid email format').required('Email is required'),
-  tel: yup
-    .string()
-    .matches(/^[0-9]+$/, 'Phone number must be numeric')
-    .required('Phone number is required'),
-});
+import { bookValidationSchema } from '../../validation/bookValidationSchema.js';
 
 const BookForm = ({ avatar, name, closeModal }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(bookValidationSchema),
   });
 
   const onSubmit = data => {
     console.log('Form Data:', data);
+    reset();
   };
 
   return (
@@ -125,7 +117,7 @@ const BookForm = ({ avatar, name, closeModal }) => {
               Culture, travel or hobby
             </label>
           </div>
-          <div className={s.errorContainer}>
+          <div className={s.radioErrorContainer}>
             {errors.form && <p className={s.error}>{errors.form.message}</p>}
           </div>
         </fieldset>

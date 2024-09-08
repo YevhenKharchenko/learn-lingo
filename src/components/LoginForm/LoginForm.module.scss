@@ -42,6 +42,18 @@
   gap: 18px;
 }
 
+.errorContainer {
+  min-height: 15px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+}
+
 .submitBtn {
   width: 100%;
   margin-top: 22px;

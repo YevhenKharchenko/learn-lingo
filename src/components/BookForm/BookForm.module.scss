@@ -69,7 +69,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
 .formSubtitle {
@@ -84,7 +83,6 @@
   padding: 0;
   margin: 0;
   border: none;
-  margin-bottom: 22px;
 }
 
 .radioWrapper {
@@ -97,6 +95,11 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  text-align: center;
+  color: #121417;
 }
 
 .customRadio {
@@ -151,8 +154,15 @@
 }
 
 .errorContainer {
-  min-height: 12px;
+  min-height: 15px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.radioErrorContainer {
+  composes: errorContainer;
   margin-top: 8px;
+  margin-bottom: 20px;
 }
 
 .error {
