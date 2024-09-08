@@ -1,16 +1,19 @@
 import clsx from 'clsx';
 import s from './Input.module.scss';
+import { forwardRef } from 'react';
 
-const Input = ({ type, name, className, placeholder, value }) => {
+const Input = forwardRef(({ type, className, placeholder, ...rest }, ref) => {
   return (
     <input
       type={type}
-      name={name}
-      className={clsx(s.input, className && className)}
+      className={clsx(s.input, className)}
       placeholder={placeholder}
-      defaultValue={value}
+      ref={ref}
+      {...rest}
     />
   );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;

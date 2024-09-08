@@ -1,7 +1,7 @@
 .container {
   padding: 64px;
   background-color: #fff;
-  border-radius: 24px;
+  border-radius: 30px;
   max-width: 600px;
   position: relative;
 }
@@ -24,16 +24,16 @@
   font-size: 40px;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #191a15;
+  color: #121417;
   margin-bottom: 20px;
 }
 
 .formText {
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.25;
-  color: rgba(25, 26, 21, 0.5);
-  margin-bottom: 40px;
+  line-height: 1.375;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 20px;
 }
 
 .infoWrapper {
@@ -63,48 +63,100 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  color: #191a15;
+  color: #121417;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+  gap: 14px;
+}
+
+.formSubtitle {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+  margin-bottom: 22px;
+}
+
+.radioWrapper {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
-.inputWrapper {
+.radioLabel {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
-.telInput {
-  width: 232px !important;
-}
-
-.textarea {
-  resize: none;
-  border: 1px solid rgba(25, 26, 21, 0.1);
-  border-radius: 12px;
-  width: 472px;
-  height: 116px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #191a15;
-  outline: none;
-  padding: 16px 18px;
-
-  &::placeholder {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.25;
-    color: #191a15;
-  }
+.customRadio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .submitBtn {
-  margin-top: 24px;
+  margin-top: 20px;
   width: 100%;
+}
+
+.visuallyHidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.radio:checked + .customRadio .radioCircle {
+  display: block;
+  border-color: #f4c550;
+}
+
+.radio:checked + .customRadio {
+  border-color: #f4c550;
+}
+
+.customRadio {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: 2px solid #d0d0d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radioCircle {
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #f4c550;
+  display: none;
+}
+
+.errorContainer {
+  min-height: 12px;
+  margin-top: 8px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
 }
