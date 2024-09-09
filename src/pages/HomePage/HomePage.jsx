@@ -24,7 +24,11 @@ const HomePage = () => {
               language proficiency to new heights by connecting with highly qualified and
               experienced tutors.
             </p>
-            <Button title="Get started" onClick={() => navigate('/teachers')} />
+            <Button
+              title="Get started"
+              className={s.startBtn}
+              onClick={() => navigate('/teachers')}
+            />
           </div>
           <div>
             <picture>

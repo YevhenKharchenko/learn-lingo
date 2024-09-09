@@ -16,7 +16,7 @@ const AppBar = () => {
         <NavLink to="/" className={s.logo}>
           <img src={logo} width="28" height="28" /> LearnLingo
         </NavLink>
-        <Navigation />
+        <Navigation isLoggedIn={isLoggedIn} />
         <AuthNav isLoggedIn={isLoggedIn} />
       </Container>
     </header>

@@ -35,8 +35,6 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, handleError)
       .addCase(loginUser.pending, handleRefreshing)
       .addCase(loginUser.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.user = { name: action.payload.name, email: action.payload.email };
         state.token = action.payload.token;
         state.isRefreshing = false;
