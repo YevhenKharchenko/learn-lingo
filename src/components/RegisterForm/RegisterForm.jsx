@@ -5,8 +5,12 @@ import Button from '../../shared/components/Button/Button.jsx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerValidationSchema } from '../../validation/registerValidationSchema.js';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../redux/auth/operations.js';
 
 const RegisterForm = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -16,9 +20,11 @@ const RegisterForm = ({ closeModal }) => {
     resolver: yupResolver(registerValidationSchema),
   });
 
-  const onSubmit = data => {
-    console.log('Form Data:', data);
+  const onSubmit = async ({ email, password, name }) => {
+    await dispatch(registerUser({ email, password, name }));
+
     reset();
+    closeModal();
   };
 
   return (

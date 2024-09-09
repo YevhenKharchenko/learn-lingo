@@ -4,8 +4,12 @@ import { NavLink } from 'react-router-dom';
 import AuthNav from '../AuthNav/AuthNav.jsx';
 import logo from '../../assets/images/ukraine.svg';
 import Container from '../../shared/components/Container/Container.jsx';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/selectors.js';
 
 const AppBar = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <header className={s.header}>
       <Container className={s.container}>
@@ -13,7 +17,7 @@ const AppBar = () => {
           <img src={logo} width="28" height="28" /> LearnLingo
         </NavLink>
         <Navigation />
-        <AuthNav />
+        <AuthNav isLoggedIn={isLoggedIn} />
       </Container>
     </header>
   );
