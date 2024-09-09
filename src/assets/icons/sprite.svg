@@ -38,5 +38,9 @@
     <symbol id="icon-radio-container" viewBox="0 0 32 32">
       <path stroke-width="3.2" d="M16 1.6c7.953 0 14.4 6.447 14.4 14.4S23.953 30.4 16 30.4 1.6 23.953 1.6 16 8.047 1.6 16 1.6z"/>
     </symbol>
+    <symbol id="icon-eye" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="M1.333 16S6.666 5.333 16 5.333 30.667 16 30.667 16 25.334 26.667 16 26.667C6.667 26.667 1.333 16 1.333 16z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+    </symbol>
   </defs>
 </svg>

@@ -54,6 +54,19 @@
   margin: 0;
 }
 
+.passLabel {
+  position: relative;
+}
+
+.eyeIcon {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  fill: #fff;
+  stroke: #121417;
+  cursor: pointer;
+}
+
 .submitBtn {
   width: 100%;
   margin-top: 22px;

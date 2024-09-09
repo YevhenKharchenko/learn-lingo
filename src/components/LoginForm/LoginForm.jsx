@@ -6,10 +6,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginValidationSchema } from '../../validation/loginValidationSchema.js';
 import { loginUser } from '../../redux/auth/operations.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from '../../redux/selectors.js';
+import Loader from '../../shared/components/Loader/Loader.jsx';
+import { useState } from 'react';
 
 const LoginForm = ({ closeModal }) => {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -46,13 +51,29 @@ const LoginForm = ({ closeModal }) => {
             {errors.email && <p className={s.error}>{errors.email.message}</p>}
           </div>
         </label>
-        <label>
-          <Input type="password" placeholder="Password" {...register('password')} />
+        <label className={s.passLabel}>
+          <Input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Password"
+            {...register('password')}
+          />
+          <svg
+            className={s.eyeIcon}
+            width="20"
+            height="20"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            <use xlinkHref={`${sprite}#icon-${showPassword ? 'eye' : 'eye-off'}`}></use>
+          </svg>
           <div className={s.errorContainer}>
             {errors.password && <p className={s.error}>{errors.password.message}</p>}
           </div>
         </label>
-        <Button type="submit" title="Log In" className={s.submitBtn} />
+        {isRefreshing ? (
+          <Loader />
+        ) : (
+          <Button type="submit" title="Log In" className={s.submitBtn} />
+        )}
       </form>
     </div>
   );

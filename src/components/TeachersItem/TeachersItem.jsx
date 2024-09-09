@@ -31,7 +31,6 @@ const TeachersItem = ({ data }) => {
   const handleReadMoreBtnClick = () => {
     setIsShowMore(true);
   };
-  console.log(data);
 
   return (
     <div className={s.wrapper}>
