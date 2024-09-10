@@ -3,8 +3,6 @@ import { database } from './firebase.js';
 
 export const removeFromFavoriteFirebase = async (email, avatar) => {
   try {
-    console.log(avatar);
-
     const usersRef = ref(database, 'users');
     const userQuery = query(usersRef, orderByChild('email'), equalTo(email));
     const snapshot = await get(userQuery);
@@ -18,12 +16,9 @@ export const removeFromFavoriteFirebase = async (email, avatar) => {
 
       if (favoritesSnapshot.exists()) {
         const favorites = favoritesSnapshot.val();
-        console.log(favorites);
-
         const favoriteIdToRemove = Object.keys(favorites).find(key => {
           return favorites[key].avatar_url === avatar;
         });
-        console.log(favoriteIdToRemove);
 
         if (favoriteIdToRemove) {
           const favoriteToRemoveRef = ref(
@@ -31,6 +26,7 @@ export const removeFromFavoriteFirebase = async (email, avatar) => {
             `users/${userId}/favorites/${favoriteIdToRemove}`
           );
           await remove(favoriteToRemoveRef);
+
           return { success: true, id: favoriteIdToRemove };
         } else {
           throw new Error('Favorite not found');

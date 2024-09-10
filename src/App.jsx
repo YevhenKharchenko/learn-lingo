@@ -6,6 +6,7 @@ import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 import { PrivateRoute } from './components/PrivateRoute.jsx';
 import { useDispatch } from 'react-redux';
 import { fetchTeachers } from './redux/teachers/operations.js';
+import useBodyBackgroundColor from './hooks/useBodyBackgroundColor.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const CatalogPage = lazy(() => import('./pages/TeachersPage/TeachersPage.jsx'));
@@ -14,6 +15,8 @@ const FavoritePage = lazy(() => import('./pages/FavoritePage/FavoritePage.jsx'))
 function App() {
   const dispatch = useDispatch();
   const isFirstRender = useRef(true);
+
+  useBodyBackgroundColor();
 
   useEffect(() => {
     if (isFirstRender.current) {

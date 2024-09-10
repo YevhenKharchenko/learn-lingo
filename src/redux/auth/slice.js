@@ -50,8 +50,6 @@ const authSlice = createSlice({
         state.user = { name: action.payload.name, email: action.payload.email };
         state.token = action.payload.token;
         state.id = action.payload.id;
-        console.log(action.payload.favorites);
-
         state.favorites = action.payload.favorites;
         state.isLoggedIn = true;
       })

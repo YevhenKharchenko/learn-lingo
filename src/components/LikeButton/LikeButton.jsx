@@ -28,7 +28,6 @@ const LikeButton = ({ data }) => {
       await dispatch(addTeacherToFavorite({ userEmail, data }));
     }
   };
-  console.log(favorites);
 
   return (
     <button className={s.likeButton} onClick={handleLikeClick} disabled={!isLoggedIn}>

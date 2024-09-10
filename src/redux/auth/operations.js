@@ -34,10 +34,8 @@ export const loginUser = createAsyncThunk('auth/login', async ({ email, password
   try {
     const user = await loginFirebase(email, password);
     toast.success(`You have successfully logged in as ${user.displayName}.`);
-    console.log(user);
 
     const { favorites } = await fetchUserFavoritesFirebase(email);
-    console.log(favorites);
 
     return { email: user.email, name: user.displayName, token: user.accessToken, favorites };
   } catch (e) {
@@ -54,7 +52,7 @@ export const loginUser = createAsyncThunk('auth/login', async ({ email, password
 export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await logoutFirebase();
-    toast.success('You have successfully logged out.');
+    toast.success('You have successfully logged out');
   } catch (e) {
     toast.error(`Oops! Something went wrong. Error details: ${e.message}`);
     return thunkAPI.rejectWithValue(e.message);
@@ -66,7 +64,7 @@ export const addTeacherToFavorite = createAsyncThunk(
   async ({ userEmail, data }, thunkAPI) => {
     try {
       const favoriteObject = await addFavoriteToUserFirebase(userEmail, data);
-      toast.success('Favorite added successfully.');
+      toast.success('Tutor added to the favorite list');
 
       return favoriteObject;
     } catch (e) {
@@ -81,7 +79,7 @@ export const removeTeacherFromFavorite = createAsyncThunk(
   async ({ userEmail, avatar }, thunkAPI) => {
     try {
       const favoriteObject = await removeFromFavoriteFirebase(userEmail, avatar);
-      toast.success('Favorite removed successfully.');
+      toast.success('Tutor removed from the favorite list');
 
       return favoriteObject;
     } catch (e) {
@@ -96,7 +94,6 @@ export const fetchFavorites = createAsyncThunk(
   async ({ email }, thunkAPI) => {
     try {
       const { favorites } = await fetchUserFavoritesFirebase(email);
-      console.log(favorites);
 
       return { favorites };
     } catch (e) {

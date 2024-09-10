@@ -3,8 +3,6 @@ import { database } from './firebase.js';
 
 export const addFavoriteToUserFirebase = async (email, favoriteData) => {
   // try {
-  //   console.log(userId, favoriteData);
-
   //   const favoritesRef = ref(database, `users/${userId}/favorites`);
   //   const newFavoriteRef = await push(favoritesRef, favoriteData);
 
@@ -17,8 +15,6 @@ export const addFavoriteToUserFirebase = async (email, favoriteData) => {
   try {
     const usersRef = ref(database, 'users');
     const userQuery = query(usersRef, orderByChild('email'), equalTo(email));
-
-    console.log(email);
 
     const snapshot = await get(userQuery);
 
