@@ -7,6 +7,7 @@ import { useCallback, useState } from 'react';
 import Button from '../../shared/components/Button/Button.jsx';
 import { useModal } from '../../hooks/useModal.jsx';
 import BookForm from '../BookForm/BookForm.jsx';
+import LikeButton from '../LikeButton/LikeButton.jsx';
 
 const TeachersItem = ({ data }) => {
   const [isShowMore, setIsShowMore] = useState(false);
@@ -69,11 +70,7 @@ const TeachersItem = ({ data }) => {
                 </p>
               </li>
             </ul>
-            <button>
-              <svg className={s.likeIcon} width="23" height="20">
-                <use xlinkHref={`${sprite}#icon-like`}></use>
-              </svg>
-            </button>
+            <LikeButton data={data} />
           </div>
         </div>
         <div className={s.infoWrapper}>

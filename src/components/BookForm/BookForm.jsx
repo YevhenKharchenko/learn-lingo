@@ -15,11 +15,15 @@ const BookForm = ({ avatar, name, closeModal }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(bookValidationSchema),
+    defaultValues: {
+      form: 'career',
+    },
   });
 
   const onSubmit = data => {
-    console.log('Form Data:', data);
+    console.log(data);
     reset();
+    closeModal();
   };
 
   return (

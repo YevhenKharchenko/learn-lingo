@@ -6,26 +6,31 @@ import { useEffect, useRef } from 'react';
 import { fetchTeachers } from '../../redux/teachers/operations.js';
 import {
   selectHasMore,
-  selectIsLastPage,
+  selectIsLoggedIn,
   selectLastKey,
   selectTeachers,
+  selectUserEmail,
 } from '../../redux/selectors.js';
 import Button from '../../shared/components/Button/Button.jsx';
+import { fetchFavorites } from '../../redux/auth/operations.js';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
-  const isLastPage = useSelector(selectIsLastPage);
   const lastKey = useSelector(selectLastKey);
-  const isFirstRender = useRef(true);
   const hasMore = useSelector(selectHasMore);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const email = useSelector(selectUserEmail);
+
+  // useEffect(() => {
+  // dispatch(fetchTeachers());
+  // }, [dispatch]);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      dispatch(fetchTeachers());
-      isFirstRender.current = false;
+    if (isLoggedIn) {
+      dispatch(fetchFavorites({ email }));
     }
-  }, [dispatch]);
+  });
 
   const handleLoadBtnClick = () => {
     dispatch(fetchTeachers(lastKey));

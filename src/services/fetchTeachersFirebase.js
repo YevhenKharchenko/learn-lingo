@@ -23,10 +23,8 @@ export const fetchTeachersFirebase = async (lastKey = 0) => {
   try {
     const teachersRef = ref(database, 'teachers');
 
-    // Create a query with `limitToFirst` and `orderByKey`
     let teachersQuery = query(teachersRef, orderByKey(), limitToFirst(4));
 
-    // If `lastKey` is present, start the query after that key
     if (lastKey) {
       teachersQuery = query(teachersRef, orderByKey(), startAfter(lastKey), limitToFirst(4));
     }

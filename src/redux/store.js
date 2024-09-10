@@ -16,7 +16,7 @@ import { teachersReducer } from './teachers/slice.js';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isLoggedIn', 'user'],
+  whitelist: ['token', 'isLoggedIn', 'user', 'id'],
 };
 
 export const store = configureStore({
