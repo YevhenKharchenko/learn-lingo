@@ -3,6 +3,7 @@ import sprite from '../../assets/icons/sprite.svg';
 import s from './LikeButton.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  selectFavorites,
   selectIsFavorite,
   selectIsLoggedIn,
   selectUserEmail,
@@ -18,6 +19,7 @@ const LikeButton = ({ data }) => {
   const isFavorite = useSelector(selectIsFavorite(data));
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const avatar = data.avatar_url;
+  const favorites = useSelector(selectFavorites);
 
   const handleLikeClick = async () => {
     if (isFavorite) {
@@ -26,6 +28,7 @@ const LikeButton = ({ data }) => {
       await dispatch(addTeacherToFavorite({ userEmail, data }));
     }
   };
+  console.log(favorites);
 
   return (
     <button className={s.likeButton} onClick={handleLikeClick} disabled={!isLoggedIn}>

@@ -2,7 +2,7 @@ import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import s from './TeachersList.module.scss';
 // import teachers from '../../shared/data/teachers.json';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { fetchTeachers } from '../../redux/teachers/operations.js';
 import {
   selectHasMore,
@@ -22,15 +22,11 @@ const TeachersList = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const email = useSelector(selectUserEmail);
 
-  // useEffect(() => {
-  // dispatch(fetchTeachers());
-  // }, [dispatch]);
-
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchFavorites({ email }));
     }
-  });
+  }, [dispatch, isLoggedIn, email]);
 
   const handleLoadBtnClick = () => {
     dispatch(fetchTeachers(lastKey));

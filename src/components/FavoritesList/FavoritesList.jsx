@@ -16,7 +16,7 @@ const FavoritesList = () => {
     if (isLoggedIn) {
       dispatch(fetchFavorites({ email }));
     }
-  });
+  }, [dispatch, email, isLoggedIn]);
 
   return (
     <>

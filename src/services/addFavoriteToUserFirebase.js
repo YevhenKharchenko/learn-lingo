@@ -15,7 +15,6 @@ export const addFavoriteToUserFirebase = async (email, favoriteData) => {
   // }
 
   try {
-    // Step 1: Find the user by email
     const usersRef = ref(database, 'users');
     const userQuery = query(usersRef, orderByChild('email'), equalTo(email));
 
@@ -24,17 +23,13 @@ export const addFavoriteToUserFirebase = async (email, favoriteData) => {
     const snapshot = await get(userQuery);
 
     if (snapshot.exists()) {
-      // Step 2: Extract the user ID
       const userData = snapshot.val();
-      const userId = Object.keys(userData)[0]; // Get the user ID
+      const userId = Object.keys(userData)[0];
 
-      // Step 3: Reference to the user's favorites
       const favoritesRef = ref(database, `users/${userId}/favorites`);
 
-      // Step 4: Add the new favorite to the user's favorites
       const newFavoriteRef = await push(favoritesRef, favoriteData);
 
-      // Return the new favorite with the generated ID
       return { id: newFavoriteRef.key, ...favoriteData };
     } else {
       throw new Error('User not found');
