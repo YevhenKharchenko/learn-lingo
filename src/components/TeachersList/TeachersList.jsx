@@ -2,10 +2,11 @@ import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import s from './TeachersList.module.scss';
 // import teachers from '../../shared/data/teachers.json';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { fetchTeachers } from '../../redux/teachers/operations.js';
 import {
   selectHasMore,
+  selectIsLoading,
   selectIsLoggedIn,
   selectLastKey,
   selectTeachers,
@@ -13,6 +14,7 @@ import {
 } from '../../redux/selectors.js';
 import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
+import Loader from '../../shared/components/Loader/Loader.jsx';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,8 @@ const TeachersList = () => {
   const hasMore = useSelector(selectHasMore);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const email = useSelector(selectUserEmail);
+  const isLoading = useSelector(selectIsLoading);
+  const listRef = useRef(null);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -28,13 +32,14 @@ const TeachersList = () => {
     }
   }, [dispatch, isLoggedIn, email]);
 
-  const handleLoadBtnClick = () => {
-    dispatch(fetchTeachers(lastKey));
+  const handleLoadBtnClick = async () => {
+    await dispatch(fetchTeachers(lastKey));
+    listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 
   return (
     <>
-      <ul className={s.list}>
+      <ul className={s.list} ref={listRef}>
         {!!teachers.length &&
           teachers.map((el, idx) => {
             return (
@@ -44,7 +49,11 @@ const TeachersList = () => {
             );
           })}
       </ul>
-      {hasMore && <Button title="Load more" className={s.loadBtn} onClick={handleLoadBtnClick} />}
+      {isLoading ? (
+        <Loader className={s.loader} />
+      ) : hasMore ? (
+        <Button title="Load more" className={s.loadBtn} onClick={handleLoadBtnClick} />
+      ) : null}
     </>
   );
 };

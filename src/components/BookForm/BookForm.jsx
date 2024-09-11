@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '../../shared/components/Button/Button.jsx';
 import sprite from '../../assets/icons/sprite.svg';
 import { bookValidationSchema } from '../../validation/bookValidationSchema.js';
+import toast from 'react-hot-toast';
 
 const BookForm = ({ avatar, name, closeModal }) => {
   const {
@@ -24,6 +25,12 @@ const BookForm = ({ avatar, name, closeModal }) => {
     console.log(data);
     reset();
     closeModal();
+    toast.success(
+      'Your request for a trial lesson has been submitted! Our tutor will contact you soon.',
+      {
+        autoClose: 5000,
+      }
+    );
   };
 
   return (

@@ -70,7 +70,7 @@ const LoginForm = ({ closeModal }) => {
           </div>
         </label>
         {isRefreshing ? (
-          <Loader />
+          <Loader className={s.loader} />
         ) : (
           <Button type="submit" title="Log In" className={s.submitBtn} />
         )}

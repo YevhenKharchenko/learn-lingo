@@ -1,9 +1,10 @@
 import { RotatingLines } from 'react-loader-spinner';
 import s from './Loader.module.scss';
+import clsx from 'clsx';
 
-const Loader = () => {
+const Loader = ({ className, ...rest }) => {
   return (
-    <div className={s.loader}>
+    <div className={clsx(s.loader, className && className)}>
       <RotatingLines
         visible={true}
         height="56"
@@ -14,6 +15,7 @@ const Loader = () => {
         ariaLabel="rotating-lines-loading"
         wrapperStyle={{}}
         wrapperClass=""
+        {...rest}
       />
     </div>
   );

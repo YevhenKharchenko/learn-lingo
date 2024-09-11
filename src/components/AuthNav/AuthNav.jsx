@@ -6,12 +6,14 @@ import { useModal } from '../../hooks/useModal.jsx';
 import LoginForm from '../LoginForm/LoginForm.jsx';
 import RegisterForm from '../RegisterForm/RegisterForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserName } from '../../redux/selectors.js';
+import { selectIsRefreshing, selectUserName } from '../../redux/selectors.js';
 import { logoutUser } from '../../redux/auth/operations.js';
+import Loader from '../../shared/components/Loader/Loader.jsx';
 
 const AuthNav = ({ isLoggedIn }) => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   const setModal = useModal();
 
@@ -57,7 +59,11 @@ const AuthNav = ({ isLoggedIn }) => {
             </div>
             <p className={s.userName}>{userName}</p>
           </div>
-          <Button title="Log out" className={s.logoutBtn} onClick={handleLogoutBtnClick} />
+          {isRefreshing ? (
+            <Loader width="48" height="48" className={s.loader} />
+          ) : (
+            <Button title="Log out" className={s.logoutBtn} onClick={handleLogoutBtnClick} />
+          )}
         </>
       )}
     </nav>

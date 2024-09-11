@@ -76,7 +76,7 @@ const RegisterForm = ({ closeModal }) => {
           </div>
         </label>
         {isRefreshing ? (
-          <Loader />
+          <Loader className={s.loader} />
         ) : (
           <Button type="submit" title="Sign Up" className={s.submitBtn} />
         )}

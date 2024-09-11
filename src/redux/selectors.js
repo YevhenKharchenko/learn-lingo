@@ -10,6 +10,8 @@ export const selectIsRefreshing = state => state.auth?.isRefreshing;
 
 export const selectTeachers = state => state.teachers?.items;
 
+export const selectIsLoading = state => state.teachers?.isLoading;
+
 export const selectIsLastPage = state => state.teachers?.isLastPage;
 
 export const selectLastKey = state => state.teachers?.lastKey;
