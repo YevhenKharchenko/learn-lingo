@@ -6,10 +6,6 @@ export const fetchTeachers = createAsyncThunk(
   'teachers/fetchAll',
   async (lastKey = null, thunkAPI) => {
     try {
-      //   const teachers = await fetchTeachersFirebase(items);
-
-      //   return teachers;
-
       const teachersArray = await fetchTeachersFirebase(lastKey);
       const newLastKey =
         teachersArray.length > 0 ? teachersArray[teachersArray.length - 1].key : null;

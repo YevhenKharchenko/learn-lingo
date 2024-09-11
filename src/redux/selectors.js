@@ -22,3 +22,5 @@ export const selectFavorites = state => state.auth?.favorites;
 
 export const selectIsFavorite = item => state =>
   state.auth?.favorites?.some(el => el.avatar_url === item.avatar_url) || false;
+
+export const selectFilters = state => state.teachers?.filters;

@@ -11,6 +11,7 @@ export const fetchUserFavoritesFirebase = async email => {
     if (snapshot.exists()) {
       const userData = snapshot.val();
       const userId = Object.keys(userData)[0];
+
       const favorites = userData[userId].favorites || [];
 
       const transformedFavorites = Object.entries(favorites).map(([id, data]) => ({

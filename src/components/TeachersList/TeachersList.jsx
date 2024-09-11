@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { fetchTeachers } from '../../redux/teachers/operations.js';
 import {
+  selectFilters,
   selectHasMore,
   selectIsLoading,
   selectIsLoggedIn,
@@ -15,6 +16,7 @@ import {
 import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
 import Loader from '../../shared/components/Loader/Loader.jsx';
+import { resetFilters } from '../../redux/teachers/slice.js';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
@@ -25,8 +27,22 @@ const TeachersList = () => {
   const email = useSelector(selectUserEmail);
   const isLoading = useSelector(selectIsLoading);
   const listRef = useRef(null);
+  const filters = useSelector(selectFilters);
+
+  const filteredTeachersList = teachers.filter(teacher => {
+    const { language, level, price } = filters;
+
+    const matchesLanguage = !language || teacher.languages.includes(language);
+    const matchesLevel = !level || teacher.levels.includes(level);
+    const matchesPrice = !price || teacher.price_per_hour <= parseInt(price);
+
+    return matchesLanguage && matchesLevel && matchesPrice;
+  });
+  console.log(filteredTeachersList);
 
   useEffect(() => {
+    dispatch(resetFilters());
+
     if (isLoggedIn) {
       dispatch(fetchFavorites({ email }));
     }
@@ -40,8 +56,8 @@ const TeachersList = () => {
   return (
     <>
       <ul className={s.list} ref={listRef}>
-        {!!teachers.length &&
-          teachers.map((el, idx) => {
+        {!!filteredTeachersList.length &&
+          filteredTeachersList.map((el, idx) => {
             return (
               <li key={idx}>
                 <TeachersItem data={el} />

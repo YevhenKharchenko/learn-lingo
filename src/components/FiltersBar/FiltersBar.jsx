@@ -1,25 +1,28 @@
 import Select from 'react-select';
 import s from './FiltersBar.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilters } from '../../redux/selectors.js';
+import { setFilters } from '../../redux/teachers/slice.js';
 
 const langOptions = [
-  { value: 'english', label: 'English' },
-  { value: 'french', label: 'French' },
-  { value: 'german', label: 'German' },
-  { value: 'ukrainian', label: 'Ukrainian' },
-  { value: 'polish', label: 'Polish' },
-  { value: 'spanish', label: 'Spanish' },
-  { value: 'italian', label: 'Italian' },
-  { value: 'korean', label: 'Korean' },
-  { value: 'chinese', label: 'Mandarin Chinese' },
-  { value: 'vietnamese', label: 'Vietnamese' },
+  { value: 'English', label: 'English' },
+  { value: 'French', label: 'French' },
+  { value: 'German', label: 'German' },
+  { value: 'Ukrainian', label: 'Ukrainian' },
+  { value: 'Polish', label: 'Polish' },
+  { value: 'Spanish', label: 'Spanish' },
+  { value: 'Italian', label: 'Italian' },
+  { value: 'Korean', label: 'Korean' },
+  { value: 'Mandarin Chinese', label: 'Mandarin Chinese' },
+  { value: 'Vietnamese', label: 'Vietnamese' },
 ];
 const levelOptions = [
-  { value: 'a1', label: 'A1 Beginner' },
-  { value: 'a2', label: 'A2 Elementary' },
-  { value: 'b1', label: 'B1 Intermediate' },
-  { value: 'b2', label: 'B2 Upper-Intermediate' },
-  { value: 'c1', label: 'C1 Advanced' },
-  { value: 'c2', label: 'C2 Proficient' },
+  { value: 'A1 Beginner', label: 'A1 Beginner' },
+  { value: 'A2 Elementary', label: 'A2 Elementary' },
+  { value: 'B1 Intermediate', label: 'B1 Intermediate' },
+  { value: 'B2 Upper-Intermediate', label: 'B2 Upper-Intermediate' },
+  { value: 'C1 Advanced', label: 'C1 Advanced' },
+  { value: 'C2 Proficient', label: 'C2 Proficient' },
 ];
 const priceOptions = [
   { value: '10', label: '10 $' },
@@ -50,6 +53,14 @@ const customStyles = {
 };
 
 const FiltersBar = () => {
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
+  console.log(filters);
+
+  const handleSelectChange = (selectedOption, { name }) => {
+    dispatch(setFilters({ [name]: selectedOption.value }));
+  };
+
   return (
     <form className={s.filtersForm}>
       <label className={s.selectLabel}>
@@ -58,6 +69,8 @@ const FiltersBar = () => {
           className={s.langSelect}
           styles={customStyles}
           options={langOptions}
+          name="language"
+          onChange={handleSelectChange}
           components={{
             IndicatorSeparator: () => null,
           }}
@@ -69,6 +82,8 @@ const FiltersBar = () => {
           className={s.langSelect}
           styles={customStyles}
           options={levelOptions}
+          name="level"
+          onChange={handleSelectChange}
           components={{
             IndicatorSeparator: () => null,
           }}
@@ -80,6 +95,8 @@ const FiltersBar = () => {
           className={s.langSelect}
           styles={customStyles}
           options={priceOptions}
+          name="price"
+          onChange={handleSelectChange}
           components={{
             IndicatorSeparator: () => null,
           }}
