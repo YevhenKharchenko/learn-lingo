@@ -14,3 +14,17 @@
 .loader {
   margin-top: 64px;
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 128px;
+  padding-bottom: 64px;
+}
+
+.emptyText {
+  font-size: 24px;
+  color: #121417;
+  text-align: center;
+}

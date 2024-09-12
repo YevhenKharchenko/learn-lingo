@@ -20,6 +20,7 @@ const FavoritesList = () => {
   const filters = useSelector(selectFilters);
   const [count, setCount] = useState(4);
   const listRef = useRef(null);
+  const hasFilters = Boolean(filters.language || filters.level || filters.price);
 
   const filteredFavoritesList = favorites.filter(teacher => {
     const { language, level, price } = filters;
@@ -58,6 +59,15 @@ const FavoritesList = () => {
             );
           })}
       </ul>
+      {!filteredFavoritesList.length && (
+        <div className={s.empty}>
+          <p className={s.emptyText}>
+            {hasFilters
+              ? 'No teachers found matching your criteria. Please adjust your filters and try again.'
+              : 'You have not added any teachers to your favorites list yet.'}
+          </p>
+        </div>
+      )}
       {count < filteredFavoritesList.length && (
         <Button title="Load more" className={s.loadBtn} onClick={handleLoadMoreBtnClick} />
       )}

@@ -8,13 +8,13 @@ const langOptions = [
   { value: 'English', label: 'English' },
   { value: 'French', label: 'French' },
   { value: 'German', label: 'German' },
-  { value: 'Ukrainian', label: 'Ukrainian' },
-  { value: 'Polish', label: 'Polish' },
   { value: 'Spanish', label: 'Spanish' },
   { value: 'Italian', label: 'Italian' },
   { value: 'Korean', label: 'Korean' },
   { value: 'Mandarin Chinese', label: 'Mandarin Chinese' },
   { value: 'Vietnamese', label: 'Vietnamese' },
+  { value: 'Ukrainian', label: 'Ukrainian' },
+  { value: 'Polish', label: 'Polish' },
 ];
 const levelOptions = [
   { value: '', label: 'Any level' },

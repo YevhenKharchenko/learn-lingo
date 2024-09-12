@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { fetchAllTeachersFirebase } from '../../services/fetchAllTeachersFirebase.js';
 
 export const fetchTeachers = createAsyncThunk(
-  'teachers/fetchAll',
+  'teachers/fetchTeachers',
   async (lastKey = null, thunkAPI) => {
     try {
       const teachersArray = await fetchTeachersFirebase(lastKey);
@@ -24,7 +24,6 @@ export const fetchAllTeachers = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const teachers = await fetchAllTeachersFirebase();
-      console.log(teachers);
 
       return teachers;
     } catch (e) {

@@ -69,6 +69,15 @@ const TeachersList = () => {
             );
           })}
       </ul>
+      {!filteredTeachersList.length && (
+        <div className={s.empty}>
+          <p className={s.emptyText}>
+            {hasMore
+              ? "Click on the 'Load more' button to see additional teachers who may meet your needs."
+              : 'No teachers found matching your criteria. Please adjust your filters and try again.'}
+          </p>
+        </div>
+      )}
       {isLoading ? (
         <Loader className={s.loader} />
       ) : hasMore ? (
