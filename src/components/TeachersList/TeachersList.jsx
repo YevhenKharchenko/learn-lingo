@@ -38,7 +38,6 @@ const TeachersList = () => {
 
     return matchesLanguage && matchesLevel && matchesPrice;
   });
-  console.log(filteredTeachersList);
 
   useEffect(() => {
     dispatch(resetFilters());

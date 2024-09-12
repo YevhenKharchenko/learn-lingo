@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(10px);
 }
 
@@ -24,4 +24,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

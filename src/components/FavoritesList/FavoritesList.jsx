@@ -1,7 +1,7 @@
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import s from './FavoritesList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   selectFavorites,
   selectFilters,
@@ -11,6 +11,7 @@ import {
 import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
+import Loader from '../../shared/components/Loader/Loader.jsx';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const FavoritesList = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const email = useSelector(selectUserEmail);
   const filters = useSelector(selectFilters);
+  const [count, setCount] = useState(4);
+  const listRef = useRef(null);
 
   const filteredFavoritesList = favorites.filter(teacher => {
     const { language, level, price } = filters;
@@ -37,11 +40,18 @@ const FavoritesList = () => {
     }
   }, [dispatch, email, isLoggedIn]);
 
+  const handleLoadMoreBtnClick = () => {
+    setCount(prevCount => prevCount + 4);
+    setTimeout(() => {
+      listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);
+  };
+
   return (
     <>
-      <ul className={s.list}>
+      <ul className={s.list} ref={listRef}>
         {!!filteredFavoritesList.length &&
-          filteredFavoritesList.map((el, idx) => {
+          filteredFavoritesList.slice(0, count).map((el, idx) => {
             return (
               <li key={idx}>
                 <TeachersItem data={el} />
@@ -49,6 +59,9 @@ const FavoritesList = () => {
             );
           })}
       </ul>
+      {count < filteredFavoritesList.length && (
+        <Button title="Load more" className={s.loadBtn} onClick={handleLoadMoreBtnClick} />
+      )}
     </>
   );
 };

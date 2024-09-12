@@ -57,8 +57,6 @@ const customStyles = {
 
 const FiltersBar = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(selectFilters);
-  console.log(filters);
 
   const handleSelectChange = (selectedOption, { name }) => {
     dispatch(setFilters({ [name]: selectedOption.value }));
