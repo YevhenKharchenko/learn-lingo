@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTeachers } from './operations';
+import { fetchAllTeachers, fetchTeachers } from './operations';
 
 function handleRefreshing(state) {
   state.isLoading = true;
@@ -48,7 +48,15 @@ const teachersSlice = createSlice({
         state.lastKey = action.payload.lastKey;
         state.hasMore = action.payload.teachers.length > 3;
       })
-      .addCase(fetchTeachers.rejected, handleError);
+      .addCase(fetchTeachers.rejected, handleError)
+      .addCase(fetchAllTeachers.pending, handleRefreshing)
+      .addCase(fetchAllTeachers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+        state.hasMore = false;
+      })
+      .addCase(fetchAllTeachers.rejected, handleError);
   },
 });
 

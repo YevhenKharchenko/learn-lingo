@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchTeachersFirebase } from '../../services/fetchTeachersFirebase.js';
 import toast from 'react-hot-toast';
+import { fetchAllTeachersFirebase } from '../../services/fetchAllTeachersFirebase.js';
 
 export const fetchTeachers = createAsyncThunk(
   'teachers/fetchAll',
@@ -12,10 +13,21 @@ export const fetchTeachers = createAsyncThunk(
 
       return { teachers: teachersArray, lastKey: newLastKey };
     } catch (e) {
-      if (e.code === 'auth/email-already-in-use') {
-        return thunkAPI.rejectWithValue(e.message);
-      }
+      toast.error(`Oops! Something went wrong. Error details: ${e.message}`);
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 
+export const fetchAllTeachers = createAsyncThunk(
+  'teachers/fetchAllTeachers',
+  async (_, thunkAPI) => {
+    try {
+      const teachers = await fetchAllTeachersFirebase();
+      console.log(teachers);
+
+      return teachers;
+    } catch (e) {
       toast.error(`Oops! Something went wrong. Error details: ${e.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }

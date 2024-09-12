@@ -1,11 +1,10 @@
 import Select from 'react-select';
-import s from './FiltersBar.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilters } from '../../redux/selectors.js';
+import { useDispatch } from 'react-redux';
 import { setFilters } from '../../redux/teachers/slice.js';
+import s from './FiltersBar.module.scss';
 
 const langOptions = [
-  { value: null, label: 'All languages' },
+  { value: '', label: 'All languages' },
   { value: 'English', label: 'English' },
   { value: 'French', label: 'French' },
   { value: 'German', label: 'German' },
@@ -18,7 +17,7 @@ const langOptions = [
   { value: 'Vietnamese', label: 'Vietnamese' },
 ];
 const levelOptions = [
-  { value: null, label: 'Any level' },
+  { value: '', label: 'Any level' },
   { value: 'A1 Beginner', label: 'A1 Beginner' },
   { value: 'A2 Elementary', label: 'A2 Elementary' },
   { value: 'B1 Intermediate', label: 'B1 Intermediate' },
@@ -27,7 +26,7 @@ const levelOptions = [
   { value: 'C2 Proficient', label: 'C2 Proficient' },
 ];
 const priceOptions = [
-  { value: null, label: 'Any price' },
+  { value: '', label: 'Any price' },
   { value: '10', label: '10 $' },
   { value: '20', label: '20 $' },
   { value: '30', label: '30 $' },

@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <SharedLayout>
-        <Toaster position="top-center" />
+        <Toaster position="top-right" />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/teachers" element={<CatalogPage />} />

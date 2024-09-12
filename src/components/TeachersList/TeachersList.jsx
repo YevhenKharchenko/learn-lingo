@@ -3,7 +3,7 @@ import s from './TeachersList.module.scss';
 // import teachers from '../../shared/data/teachers.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import { fetchTeachers } from '../../redux/teachers/operations.js';
+import { fetchAllTeachers, fetchTeachers } from '../../redux/teachers/operations.js';
 import {
   selectFilters,
   selectHasMore,
@@ -28,6 +28,7 @@ const TeachersList = () => {
   const isLoading = useSelector(selectIsLoading);
   const listRef = useRef(null);
   const filters = useSelector(selectFilters);
+  const hasFilters = Boolean(filters.language || filters.level || filters.price);
 
   const filteredTeachersList = teachers.filter(teacher => {
     const { language, level, price } = filters;
@@ -48,7 +49,11 @@ const TeachersList = () => {
   }, [dispatch, isLoggedIn, email]);
 
   const handleLoadBtnClick = async () => {
-    await dispatch(fetchTeachers(lastKey));
+    if (hasFilters) {
+      await dispatch(fetchAllTeachers());
+    } else {
+      await dispatch(fetchTeachers(lastKey));
+    }
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 

@@ -31,7 +31,7 @@ const AppBar = () => {
     <header className={clsx(s.header, scrolled && s.scrolled)}>
       <Container className={s.container}>
         <NavLink to="/" className={s.logo}>
-          <img src={logo} width="28" height="28" /> LearnLingo
+          <img src={logo} alt="Logo" width="28" height="28" /> LearnLingo
         </NavLink>
         <Navigation isLoggedIn={isLoggedIn} />
         <AuthNav isLoggedIn={isLoggedIn} />

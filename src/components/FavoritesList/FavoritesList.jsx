@@ -11,7 +11,6 @@ import {
 import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
-import Loader from '../../shared/components/Loader/Loader.jsx';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();
