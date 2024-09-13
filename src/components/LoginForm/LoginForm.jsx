@@ -1,15 +1,15 @@
-import s from './LoginForm.module.scss';
-import sprite from '../../assets/icons/sprite.svg';
-import Input from '../../shared/components/Input/Input.jsx';
-import Button from '../../shared/components/Button/Button.jsx';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { loginValidationSchema } from '../../validation/loginValidationSchema.js';
 import { loginUser } from '../../redux/auth/operations.js';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/selectors.js';
+import Input from '../../shared/components/Input/Input.jsx';
 import Loader from '../../shared/components/Loader/Loader.jsx';
-import { useState } from 'react';
+import Button from '../../shared/components/Button/Button.jsx';
+import sprite from '../../assets/icons/sprite.svg';
+import s from './LoginForm.module.scss';
 
 const LoginForm = ({ closeModal }) => {
   const dispatch = useDispatch();

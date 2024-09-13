@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import s from './Input.module.scss';
 import { forwardRef } from 'react';
+import s from './Input.module.scss';
 
 const Input = forwardRef(({ type, className, placeholder, ...rest }, ref) => {
   return (

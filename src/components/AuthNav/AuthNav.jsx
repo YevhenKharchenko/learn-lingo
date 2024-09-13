@@ -1,14 +1,14 @@
-import Button from '../../shared/components/Button/Button.jsx';
-import sprite from '../../assets/icons/sprite.svg';
-import s from './AuthNav.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { useModal } from '../../hooks/useModal.jsx';
-import LoginForm from '../LoginForm/LoginForm.jsx';
-import RegisterForm from '../RegisterForm/RegisterForm.jsx';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing, selectUserName } from '../../redux/selectors.js';
 import { logoutUser } from '../../redux/auth/operations.js';
+import LoginForm from '../LoginForm/LoginForm.jsx';
+import RegisterForm from '../RegisterForm/RegisterForm.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
 import Loader from '../../shared/components/Loader/Loader.jsx';
+import sprite from '../../assets/icons/sprite.svg';
+import s from './AuthNav.module.scss';
 
 const AuthNav = ({ isLoggedIn }) => {
   const dispatch = useDispatch();

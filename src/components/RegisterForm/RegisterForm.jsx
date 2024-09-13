@@ -1,15 +1,15 @@
-import s from './RegisterForm.module.scss';
-import sprite from '../../assets/icons/sprite.svg';
-import Input from '../../shared/components/Input/Input.jsx';
-import Button from '../../shared/components/Button/Button.jsx';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { registerValidationSchema } from '../../validation/registerValidationSchema.js';
-import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../redux/auth/operations.js';
 import { selectIsRefreshing } from '../../redux/selectors.js';
+import Input from '../../shared/components/Input/Input.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
 import Loader from '../../shared/components/Loader/Loader.jsx';
-import { useState } from 'react';
+import sprite from '../../assets/icons/sprite.svg';
+import s from './RegisterForm.module.scss';
 
 const RegisterForm = ({ closeModal }) => {
   const dispatch = useDispatch();

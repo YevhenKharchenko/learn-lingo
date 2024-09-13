@@ -1,9 +1,9 @@
 import { Hourglass } from 'react-loader-spinner';
-import css from './HourglassLoader.module.scss';
+import s from './HourglassLoader.module.scss';
 
 const HourglassLoader = () => {
   return (
-    <div className={css.loader}>
+    <div className={s.loader}>
       <Hourglass
         visible={true}
         height="80"
@@ -13,7 +13,7 @@ const HourglassLoader = () => {
         wrapperClass=""
         colors={['#306cce', '#72a1ed']}
       />
-      <p className={css.loaderText}>Loading data. Please wait a moment...</p>
+      <p className={s.loaderText}>Loading data. Please wait a moment...</p>
     </div>
   );
 };

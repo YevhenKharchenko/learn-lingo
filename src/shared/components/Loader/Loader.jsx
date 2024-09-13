@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { RotatingLines } from 'react-loader-spinner';
 import s from './Loader.module.scss';
-import clsx from 'clsx';
 
 const Loader = ({ className, ...rest }) => {
   return (

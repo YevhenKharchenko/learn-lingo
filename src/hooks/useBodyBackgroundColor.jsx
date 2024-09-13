@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const useBodyBackgroundColor = () => {
+export const useBodyBackgroundColor = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -28,5 +28,3 @@ const useBodyBackgroundColor = () => {
     };
   }, [location.pathname]);
 };
-
-export default useBodyBackgroundColor;

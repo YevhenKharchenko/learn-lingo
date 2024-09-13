@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import css from './ModalBackdrop.module.scss';
+import { useCallback, useEffect, useState } from 'react';
+import s from './ModalBackdrop.module.scss';
 
 const ModalBackdrop = ({ children, onClose }) => {
   const [active, setActive] = useState(false);
 
-  const dynamicStyle = clsx(css.backdrop, active && css.active);
+  const dynamicStyle = clsx(s.backdrop, active && s.active);
 
   const handleCloseModal = useCallback(
     e => {

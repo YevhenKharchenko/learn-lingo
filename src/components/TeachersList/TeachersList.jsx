@@ -1,6 +1,3 @@
-import TeachersItem from '../TeachersItem/TeachersItem.jsx';
-import s from './TeachersList.module.scss';
-// import teachers from '../../shared/data/teachers.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { fetchAllTeachers, fetchTeachers } from '../../redux/teachers/operations.js';
@@ -13,10 +10,12 @@ import {
   selectTeachers,
   selectUserEmail,
 } from '../../redux/selectors.js';
-import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
-import Loader from '../../shared/components/Loader/Loader.jsx';
 import { resetFilters } from '../../redux/teachers/slice.js';
+import TeachersItem from '../TeachersItem/TeachersItem.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
+import Loader from '../../shared/components/Loader/Loader.jsx';
+import s from './TeachersList.module.scss';
 
 const TeachersList = () => {
   const dispatch = useDispatch();

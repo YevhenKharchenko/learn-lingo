@@ -1,12 +1,13 @@
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { lazy, useEffect, useRef } from 'react';
+import { useBodyBackgroundColor } from './hooks/useBodyBackgroundColor.jsx';
+import { PrivateRoute } from './components/PrivateRoute.jsx';
+import { fetchTeachers } from './redux/teachers/operations.js';
+import { checkAuthFirebase } from './services/checkAuthFirebase.js';
 
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
-import { PrivateRoute } from './components/PrivateRoute.jsx';
-import { useDispatch } from 'react-redux';
-import { fetchTeachers } from './redux/teachers/operations.js';
-import useBodyBackgroundColor from './hooks/useBodyBackgroundColor.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const CatalogPage = lazy(() => import('./pages/TeachersPage/TeachersPage.jsx'));
@@ -24,6 +25,10 @@ function App() {
       isFirstRender.current = false;
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    checkAuthFirebase();
+  });
 
   return (
     <>

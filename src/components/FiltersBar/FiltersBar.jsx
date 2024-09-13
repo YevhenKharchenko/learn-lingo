@@ -1,58 +1,9 @@
-import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { setFilters } from '../../redux/teachers/slice.js';
+import { langOptions, levelOptions, priceOptions } from '../../constants/filterOptions.js';
+import { selectStyles } from '../../constants/selectStyles.js';
+import Select from 'react-select';
 import s from './FiltersBar.module.scss';
-
-const langOptions = [
-  { value: '', label: 'All languages' },
-  { value: 'English', label: 'English' },
-  { value: 'French', label: 'French' },
-  { value: 'German', label: 'German' },
-  { value: 'Spanish', label: 'Spanish' },
-  { value: 'Italian', label: 'Italian' },
-  { value: 'Korean', label: 'Korean' },
-  { value: 'Mandarin Chinese', label: 'Mandarin Chinese' },
-  { value: 'Vietnamese', label: 'Vietnamese' },
-  { value: 'Ukrainian', label: 'Ukrainian' },
-  { value: 'Polish', label: 'Polish' },
-];
-const levelOptions = [
-  { value: '', label: 'Any level' },
-  { value: 'A1 Beginner', label: 'A1 Beginner' },
-  { value: 'A2 Elementary', label: 'A2 Elementary' },
-  { value: 'B1 Intermediate', label: 'B1 Intermediate' },
-  { value: 'B2 Upper-Intermediate', label: 'B2 Upper-Intermediate' },
-  { value: 'C1 Advanced', label: 'C1 Advanced' },
-  { value: 'C2 Proficient', label: 'C2 Proficient' },
-];
-const priceOptions = [
-  { value: '', label: 'Any price' },
-  { value: '10', label: '10 $' },
-  { value: '20', label: '20 $' },
-  { value: '30', label: '30 $' },
-  { value: '40', label: '40 $' },
-];
-
-const customStyles = {
-  control: provided => ({
-    ...provided,
-    width: '221px',
-    borderRadius: '14px',
-    border: 'none',
-    boxShadow: 'none',
-    padding: '4px 4px 4px 8px',
-    fontFamily: 'Roboto, sans-serif',
-    fontWeight: '500',
-    fontSize: '18px',
-    lineHeight: '1.11',
-    color: '#121417',
-    indicatorSeparator: () => ({ display: 'none' }),
-  }),
-  option: provided => ({
-    ...provided,
-    fontFamily: 'Roboto, sans-serif',
-  }),
-};
 
 const FiltersBar = () => {
   const dispatch = useDispatch();
@@ -67,7 +18,7 @@ const FiltersBar = () => {
         Languages
         <Select
           className={s.langSelect}
-          styles={customStyles}
+          styles={selectStyles}
           options={langOptions}
           name="language"
           onChange={handleSelectChange}
@@ -80,7 +31,7 @@ const FiltersBar = () => {
         Level of knowledge
         <Select
           className={s.langSelect}
-          styles={customStyles}
+          styles={selectStyles}
           options={levelOptions}
           name="level"
           onChange={handleSelectChange}
@@ -93,7 +44,7 @@ const FiltersBar = () => {
         Price
         <Select
           className={s.langSelect}
-          styles={customStyles}
+          styles={selectStyles}
           options={priceOptions}
           name="price"
           onChange={handleSelectChange}

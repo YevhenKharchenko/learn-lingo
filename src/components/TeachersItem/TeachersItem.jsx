@@ -1,13 +1,13 @@
-import s from './TeachersItem.module.scss';
-import sprite from '../../assets/icons/sprite.svg';
-import star from '../../assets/images/star.png';
-import { addComma } from '../../utils/addComma.js';
 import clsx from 'clsx';
 import { useCallback, useState } from 'react';
-import Button from '../../shared/components/Button/Button.jsx';
 import { useModal } from '../../hooks/useModal.jsx';
+import { addComma } from '../../utils/addComma.js';
+import Button from '../../shared/components/Button/Button.jsx';
 import BookForm from '../BookForm/BookForm.jsx';
 import LikeButton from '../LikeButton/LikeButton.jsx';
+import sprite from '../../assets/icons/sprite.svg';
+import star from '../../assets/images/star.png';
+import s from './TeachersItem.module.scss';
 
 const TeachersItem = ({ data }) => {
   const [isShowMore, setIsShowMore] = useState(false);

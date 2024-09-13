@@ -1,5 +1,3 @@
-import TeachersItem from '../TeachersItem/TeachersItem.jsx';
-import s from './FavoritesList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -8,9 +6,11 @@ import {
   selectIsLoggedIn,
   selectUserEmail,
 } from '../../redux/selectors.js';
-import Button from '../../shared/components/Button/Button.jsx';
 import { fetchFavorites } from '../../redux/auth/operations.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
+import TeachersItem from '../TeachersItem/TeachersItem.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
+import s from './FavoritesList.module.scss';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();

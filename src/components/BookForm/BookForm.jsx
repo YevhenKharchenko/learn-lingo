@@ -1,12 +1,12 @@
-import Input from '../../shared/components/Input/Input.jsx';
-import { useForm } from 'react-hook-form';
-import clsx from 'clsx';
-import s from './BookForm.module.scss';
-import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '../../shared/components/Button/Button.jsx';
-import sprite from '../../assets/icons/sprite.svg';
-import { bookValidationSchema } from '../../validation/bookValidationSchema.js';
 import toast from 'react-hot-toast';
+import clsx from 'clsx';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { bookValidationSchema } from '../../validation/bookValidationSchema.js';
+import Button from '../../shared/components/Button/Button.jsx';
+import Input from '../../shared/components/Input/Input.jsx';
+import sprite from '../../assets/icons/sprite.svg';
+import s from './BookForm.module.scss';
 
 const BookForm = ({ avatar, name, closeModal }) => {
   const {
