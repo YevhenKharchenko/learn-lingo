@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import {
-  selectFavorites,
+  selectFilteredFavorites,
   selectFilters,
   selectIsLoggedIn,
   selectUserEmail,
@@ -14,23 +14,13 @@ import s from './FavoritesList.module.scss';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const email = useSelector(selectUserEmail);
   const filters = useSelector(selectFilters);
   const [count, setCount] = useState(4);
   const listRef = useRef(null);
   const hasFilters = Boolean(filters.language || filters.level || filters.price);
-
-  const filteredFavoritesList = favorites.filter(teacher => {
-    const { language, level, price } = filters;
-
-    const matchesLanguage = !language || teacher.languages.includes(language);
-    const matchesLevel = !level || teacher.levels.includes(level);
-    const matchesPrice = !price || teacher.price_per_hour <= parseInt(price);
-
-    return matchesLanguage && matchesLevel && matchesPrice;
-  });
+  const filteredFavoritesList = useSelector(selectFilteredFavorites);
 
   useEffect(() => {
     dispatch(resetFilters());

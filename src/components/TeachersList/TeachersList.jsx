@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { fetchAllTeachers, fetchTeachers } from '../../redux/teachers/operations.js';
 import {
+  selectFilteredTeachers,
   selectFilters,
   selectHasMore,
   selectIsLoading,
   selectIsLoggedIn,
   selectLastKey,
-  selectTeachers,
   selectUserEmail,
 } from '../../redux/selectors.js';
 import { fetchFavorites } from '../../redux/auth/operations.js';
@@ -19,7 +19,6 @@ import s from './TeachersList.module.scss';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
-  const teachers = useSelector(selectTeachers);
   const lastKey = useSelector(selectLastKey);
   const hasMore = useSelector(selectHasMore);
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -28,16 +27,7 @@ const TeachersList = () => {
   const listRef = useRef(null);
   const filters = useSelector(selectFilters);
   const hasFilters = Boolean(filters.language || filters.level || filters.price);
-
-  const filteredTeachersList = teachers.filter(teacher => {
-    const { language, level, price } = filters;
-
-    const matchesLanguage = !language || teacher.languages.includes(language);
-    const matchesLevel = !level || teacher.levels.includes(level);
-    const matchesPrice = !price || teacher.price_per_hour <= parseInt(price);
-
-    return matchesLanguage && matchesLevel && matchesPrice;
-  });
+  const filteredTeachersList = useSelector(selectFilteredTeachers);
 
   useEffect(() => {
     dispatch(resetFilters());
@@ -47,12 +37,13 @@ const TeachersList = () => {
     }
   }, [dispatch, isLoggedIn, email]);
 
-  const handleLoadBtnClick = async () => {
+  const handleLoadBtnClick = () => {
     if (hasFilters) {
-      await dispatch(fetchAllTeachers());
+      dispatch(fetchAllTeachers());
     } else {
-      await dispatch(fetchTeachers(lastKey));
+      dispatch(fetchTeachers(lastKey));
     }
+
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 

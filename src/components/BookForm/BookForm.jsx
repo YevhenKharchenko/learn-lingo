@@ -5,10 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { bookValidationSchema } from '../../validation/bookValidationSchema.js';
 import Button from '../../shared/components/Button/Button.jsx';
 import Input from '../../shared/components/Input/Input.jsx';
-import sprite from '../../assets/icons/sprite.svg';
 import s from './BookForm.module.scss';
 
-const BookForm = ({ avatar, name, closeModal }) => {
+const BookForm = ({ closeModal }) => {
   const {
     register,
     handleSubmit,
@@ -17,7 +16,7 @@ const BookForm = ({ avatar, name, closeModal }) => {
   } = useForm({
     resolver: yupResolver(bookValidationSchema),
     defaultValues: {
-      form: 'career',
+      reason: 'career',
     },
   });
 
@@ -34,126 +33,106 @@ const BookForm = ({ avatar, name, closeModal }) => {
   };
 
   return (
-    <div className={s.container}>
-      <button className={s.closeBtn} onClick={closeModal}>
-        <svg className={s.closeIcon} width="32" height="32">
-          <use xlinkHref={`${sprite}#icon-x`}></use>
-        </svg>
-      </button>
-      <h2 className={s.formTitle}>Book trial lesson</h2>
-      <p className={s.formText}>
-        Our experienced tutor will assess your current language level, discuss your learning goals,
-        and tailor the lesson to your specific needs.
-      </p>
-      <div className={s.infoWrapper}>
-        <img src={avatar} alt="Avatar" width="44" height="44" className={s.img} />
-        <div className={s.nameWrapper}>
-          <p className={s.nameText}>Your teacher</p>
-          <p className={s.teacherName}>{name}</p>
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <fieldset className={s.fieldset}>
+        <legend className={s.legend}></legend>
+        <div className={s.radioWrapper}>
+          <label className={s.radioLabel} htmlFor="career">
+            <input
+              type="radio"
+              value="career"
+              {...register('reason')}
+              className={clsx(s.radio, s.visuallyHidden)}
+              id="career"
+              name="reason"
+            />
+            <div className={s.customRadio}>
+              <div className={s.radioCircle}></div>
+            </div>
+            Career and business
+          </label>
+          <label className={s.radioLabel} htmlFor="kids">
+            <input
+              type="radio"
+              value="kids"
+              {...register('reason')}
+              className={clsx(s.radio, s.visuallyHidden)}
+              id="kids"
+              name="reason"
+            />
+            <div className={s.customRadio}>
+              <div className={s.radioCircle}></div>
+            </div>
+            Lesson for kids
+          </label>
+          <label className={s.radioLabel} htmlFor="abroad">
+            <input
+              type="radio"
+              value="abroad"
+              {...register('reason')}
+              className={clsx(s.radio, s.visuallyHidden)}
+              id="abroad"
+              name="reason"
+            />
+            <div className={s.customRadio}>
+              <div className={s.radioCircle}></div>
+            </div>
+            Living abroad
+          </label>
+          <label className={s.radioLabel} htmlFor="exams">
+            <input
+              type="radio"
+              value="exams"
+              {...register('reason')}
+              className={clsx(s.radio, s.visuallyHidden)}
+              id="exams"
+              name="reason"
+            />
+            <div className={s.customRadio}>
+              <div className={s.radioCircle}></div>
+            </div>
+            Exams and coursework
+          </label>
+          <label className={s.radioLabel} htmlFor="culture">
+            <input
+              type="radio"
+              value="culture"
+              {...register('reason')}
+              className={clsx(s.radio, s.visuallyHidden)}
+              id="culture"
+              name="reason"
+            />
+            <div className={s.customRadio}>
+              <div className={s.radioCircle}></div>
+            </div>
+            Culture, travel or hobby
+          </label>
         </div>
-      </div>
-      <h3 className={s.formSubtitle}>What is your main reason for learning English?</h3>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <fieldset className={s.fieldset}>
-          <legend className={s.legend}></legend>
-          <div className={s.radioWrapper}>
-            <label className={s.radioLabel} htmlFor="career">
-              <input
-                type="radio"
-                value="career"
-                {...register('form')}
-                className={clsx(s.radio, s.visuallyHidden)}
-                id="career"
-                name="form"
-              />
-              <div className={s.customRadio}>
-                <div className={s.radioCircle}></div>
-              </div>
-              Career and business
-            </label>
-            <label className={s.radioLabel} htmlFor="kids">
-              <input
-                type="radio"
-                value="kids"
-                {...register('form')}
-                className={clsx(s.radio, s.visuallyHidden)}
-                id="kids"
-                name="form"
-              />
-              <div className={s.customRadio}>
-                <div className={s.radioCircle}></div>
-              </div>
-              Lesson for kids
-            </label>
-            <label className={s.radioLabel} htmlFor="abroad">
-              <input
-                type="radio"
-                value="abroad"
-                {...register('form')}
-                className={clsx(s.radio, s.visuallyHidden)}
-                id="abroad"
-                name="form"
-              />
-              <div className={s.customRadio}>
-                <div className={s.radioCircle}></div>
-              </div>
-              Living abroad
-            </label>
-            <label className={s.radioLabel} htmlFor="exams">
-              <input
-                type="radio"
-                value="exams"
-                {...register('form')}
-                className={clsx(s.radio, s.visuallyHidden)}
-                id="exams"
-                name="form"
-              />
-              <div className={s.customRadio}>
-                <div className={s.radioCircle}></div>
-              </div>
-              Exams and coursework
-            </label>
-            <label className={s.radioLabel} htmlFor="culture">
-              <input
-                type="radio"
-                value="culture"
-                {...register('form')}
-                className={clsx(s.radio, s.visuallyHidden)}
-                id="culture"
-                name="form"
-              />
-              <div className={s.customRadio}>
-                <div className={s.radioCircle}></div>
-              </div>
-              Culture, travel or hobby
-            </label>
-          </div>
-          <div className={s.radioErrorContainer}>
-            {errors.form && <p className={s.error}>{errors.form.message}</p>}
-          </div>
-        </fieldset>
+        <div className={s.radioErrorContainer}>
+          {errors.reason && <p className={s.error}>{errors.reason.message}</p>}
+        </div>
+      </fieldset>
 
-        <label>
-          <Input type="text" placeholder="Full Name" {...register('name')} />
-          <div className={s.errorContainer}>
-            {errors.name && <p className={s.error}>{errors.name.message}</p>}
-          </div>
-        </label>
-        <label>
-          <Input type="email" placeholder="Email" {...register('email')} />
-          <div className={s.errorContainer}>
-            {errors.email && <p className={s.error}>{errors.email.message}</p>}
-          </div>
-        </label>
-        <label>
-          <Input type="tel" placeholder="Phone number" {...register('tel')} />
-          <div className={s.errorContainer}>
-            {errors.tel && <p className={s.error}>{errors.tel.message}</p>}
-          </div>
-        </label>
-        <Button type="submit" title="Book" className={s.submitBtn} />
-      </form>
-    </div>
+      <label>
+        <Input type="text" placeholder="Full Name" {...register('name')} />
+        <div className={s.errorContainer}>
+          {errors.name && <p className={s.error}>{errors.name.message}</p>}
+        </div>
+      </label>
+      <label>
+        <Input type="email" placeholder="Email" {...register('email')} />
+        <div className={s.errorContainer}>
+          {errors.email && <p className={s.error}>{errors.email.message}</p>}
+        </div>
+      </label>
+      <label>
+        <Input type="tel" placeholder="Phone number" {...register('tel')} />
+        <div className={s.errorContainer}>
+          {errors.tel && <p className={s.error}>{errors.tel.message}</p>}
+        </div>
+      </label>
+      <Button type="submit" title="Book" className={s.submitBtn} />
+    </form>
   );
 };
 

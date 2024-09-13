@@ -25,12 +25,11 @@ const authSlice = createSlice({
       name: null,
       email: null,
     },
-    token: null,
+    favorites: [],
     id: null,
     isLoggedIn: false,
     isRefreshing: false,
     error: null,
-    favorites: [],
   },
   extraReducers: builder => {
     builder
@@ -39,7 +38,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoggedIn = true;
         state.user = { name: action.payload.name, email: action.payload.email };
-        state.token = action.payload.token;
         state.id = action.payload.id;
       })
       .addCase(registerUser.rejected, handleError)
@@ -48,7 +46,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoggedIn = true;
         state.user = { name: action.payload.name, email: action.payload.email };
-        state.token = action.payload.token;
         state.id = action.payload.id;
         state.favorites = action.payload.favorites;
       })
@@ -58,7 +55,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoggedIn = false;
         state.user = { name: null, email: null };
-        state.token = null;
         state.id = null;
         state.favorites = [];
         state.error = null;

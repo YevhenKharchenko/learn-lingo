@@ -15,7 +15,6 @@ const teachersSlice = createSlice({
   name: 'teachers',
   initialState: {
     items: [],
-    isLastPage: false,
     isLoading: false,
     error: null,
     lastKey: null,

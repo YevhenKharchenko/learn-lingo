@@ -1,3 +1,5 @@
+import { createSelector } from '@reduxjs/toolkit';
+
 export const selectIsLoggedIn = state => state.auth?.isLoggedIn;
 
 export const selectUserName = state => state.auth?.user.name;
@@ -24,3 +26,31 @@ export const selectIsFavorite = item => state =>
   state.auth?.favorites?.some(el => el.avatar_url === item.avatar_url) || false;
 
 export const selectFilters = state => state.teachers?.filters;
+
+export const selectFilteredTeachers = createSelector(
+  [selectTeachers, selectFilters],
+  (teachers, filters) => {
+    const { language, level, price } = filters;
+    return teachers.filter(teacher => {
+      const matchesLanguage = !language || teacher.languages.includes(language);
+      const matchesLevel = !level || teacher.levels.includes(level);
+      const matchesPrice = !price || teacher.price_per_hour <= parseInt(price);
+      return matchesLanguage && matchesLevel && matchesPrice;
+    });
+  }
+);
+
+export const selectFilteredFavorites = createSelector(
+  [selectFavorites, selectFilters],
+  (favorites, filters) => {
+    const { language, level, price } = filters;
+
+    return favorites.filter(teacher => {
+      const matchesLanguage = !language || teacher.languages.includes(language);
+      const matchesLevel = !level || teacher.levels.includes(level);
+      const matchesPrice = !price || teacher.price_per_hour <= parseInt(price);
+
+      return matchesLanguage && matchesLevel && matchesPrice;
+    });
+  }
+);

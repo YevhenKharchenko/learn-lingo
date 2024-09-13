@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { useCallback, useState } from 'react';
 import { useModal } from '../../hooks/useModal.jsx';
 import { addComma } from '../../utils/addComma.js';
+import BookFormModal from '../BookFormModal/BookFormModal.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
-import BookForm from '../BookForm/BookForm.jsx';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import sprite from '../../assets/icons/sprite.svg';
 import star from '../../assets/images/star.png';
@@ -20,7 +20,7 @@ const TeachersItem = ({ data }) => {
 
   const openModal = useCallback(() => {
     setModal(
-      <BookForm
+      <BookFormModal
         onClose={closeModal}
         closeModal={closeModal}
         avatar={data.avatar_url}
