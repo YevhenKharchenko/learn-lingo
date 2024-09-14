@@ -10,11 +10,11 @@ const LikeButton = ({ data }) => {
   const userEmail = useSelector(selectUserEmail);
   const isFavorite = useSelector(selectIsFavorite(data));
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const avatar = data.avatar_url;
+  const key = data.key;
 
   const handleLikeClick = async () => {
     if (isFavorite) {
-      await dispatch(removeTeacherFromFavorite({ userEmail, avatar }));
+      await dispatch(removeTeacherFromFavorite({ userEmail, key }));
     } else {
       await dispatch(addTeacherToFavorite({ userEmail, data }));
     }

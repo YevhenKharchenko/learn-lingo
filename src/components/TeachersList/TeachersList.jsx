@@ -6,11 +6,8 @@ import {
   selectFilters,
   selectHasMore,
   selectIsLoading,
-  selectIsLoggedIn,
   selectLastKey,
-  selectUserEmail,
 } from '../../redux/selectors.js';
-import { fetchFavorites } from '../../redux/auth/operations.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
@@ -21,8 +18,6 @@ const TeachersList = () => {
   const dispatch = useDispatch();
   const lastKey = useSelector(selectLastKey);
   const hasMore = useSelector(selectHasMore);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const email = useSelector(selectUserEmail);
   const isLoading = useSelector(selectIsLoading);
   const listRef = useRef(null);
   const filters = useSelector(selectFilters);
@@ -31,17 +26,13 @@ const TeachersList = () => {
 
   useEffect(() => {
     dispatch(resetFilters());
+  }, [dispatch]);
 
-    if (isLoggedIn) {
-      dispatch(fetchFavorites({ email }));
-    }
-  }, [dispatch, isLoggedIn, email]);
-
-  const handleLoadBtnClick = () => {
+  const handleLoadBtnClick = async () => {
     if (hasFilters) {
-      dispatch(fetchAllTeachers());
+      await dispatch(fetchAllTeachers());
     } else {
-      dispatch(fetchTeachers(lastKey));
+      await dispatch(fetchTeachers(lastKey));
     }
 
     listRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });

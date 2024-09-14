@@ -2,16 +2,6 @@ import { ref, push, query, get, orderByChild, equalTo } from 'firebase/database'
 import { database } from './firebase.js';
 
 export const addFavoriteToUserFirebase = async (email, favoriteData) => {
-  // try {
-  //   const favoritesRef = ref(database, `users/${userId}/favorites`);
-  //   const newFavoriteRef = await push(favoritesRef, favoriteData);
-
-  //   return { id: newFavoriteRef.key, ...favoriteData };
-  // } catch (error) {
-  //   console.error('Error adding favorite: ', error);
-  //   throw error;
-  // }
-
   try {
     const usersRef = ref(database, 'users');
     const userQuery = query(usersRef, orderByChild('email'), equalTo(email));

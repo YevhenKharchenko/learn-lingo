@@ -76,9 +76,9 @@ export const addTeacherToFavorite = createAsyncThunk(
 
 export const removeTeacherFromFavorite = createAsyncThunk(
   'auth/removeFromFavorite',
-  async ({ userEmail, avatar }, thunkAPI) => {
+  async ({ userEmail, key }, thunkAPI) => {
     try {
-      const favoriteObject = await removeFromFavoriteFirebase(userEmail, avatar);
+      const favoriteObject = await removeFromFavoriteFirebase(userEmail, key);
       toast.success('Tutor removed from the favorite list');
 
       return favoriteObject;

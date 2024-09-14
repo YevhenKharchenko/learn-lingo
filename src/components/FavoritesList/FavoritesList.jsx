@@ -1,12 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import {
-  selectFilteredFavorites,
-  selectFilters,
-  selectIsLoggedIn,
-  selectUserEmail,
-} from '../../redux/selectors.js';
-import { fetchFavorites } from '../../redux/auth/operations.js';
+import { selectFilteredFavorites, selectFilters } from '../../redux/selectors.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
@@ -14,8 +8,6 @@ import s from './FavoritesList.module.scss';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const email = useSelector(selectUserEmail);
   const filters = useSelector(selectFilters);
   const [count, setCount] = useState(4);
   const listRef = useRef(null);
@@ -24,11 +16,7 @@ const FavoritesList = () => {
 
   useEffect(() => {
     dispatch(resetFilters());
-
-    if (isLoggedIn) {
-      dispatch(fetchFavorites({ email }));
-    }
-  }, [dispatch, email, isLoggedIn]);
+  }, [dispatch]);
 
   const handleLoadMoreBtnClick = () => {
     setCount(prevCount => prevCount + 4);

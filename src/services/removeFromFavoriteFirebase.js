@@ -1,7 +1,7 @@
 import { ref, query, orderByChild, get, equalTo, remove } from 'firebase/database';
 import { database } from './firebase.js';
 
-export const removeFromFavoriteFirebase = async (email, avatar) => {
+export const removeFromFavoriteFirebase = async (email, key) => {
   try {
     const usersRef = ref(database, 'users');
     const userQuery = query(usersRef, orderByChild('email'), equalTo(email));
@@ -16,8 +16,8 @@ export const removeFromFavoriteFirebase = async (email, avatar) => {
 
       if (favoritesSnapshot.exists()) {
         const favorites = favoritesSnapshot.val();
-        const favoriteIdToRemove = Object.keys(favorites).find(key => {
-          return favorites[key].avatar_url === avatar;
+        const favoriteIdToRemove = Object.keys(favorites).find(el => {
+          return favorites[el].key === key;
         });
 
         if (favoriteIdToRemove) {
