@@ -98,7 +98,6 @@ const TeachersItem = ({ data }) => {
                 return (
                   <li className={s.reviewItem} key={idx}>
                     <div className={s.reviewRatingWrapper}>
-                      {/* <img src="" alt="Avatar" width="44" height="44" /> */}
                       <div className={s.reviewerAvatar}>{el.reviewer_name[0]}</div>
                       <div className={s.reviewNameWrapper}>
                         <p className={s.reviewerName}>{el.reviewer_name}</p>

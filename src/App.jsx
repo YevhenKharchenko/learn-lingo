@@ -5,7 +5,6 @@ import { lazy, useEffect, useRef } from 'react';
 import { useBodyBackgroundColor } from './hooks/useBodyBackgroundColor.jsx';
 import { PrivateRoute } from './components/PrivateRoute.jsx';
 import { fetchTeachers } from './redux/teachers/operations.js';
-import { checkAuthFirebase } from './services/checkAuthFirebase.js';
 
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 import { selectIsLoggedIn, selectUserEmail } from './redux/selectors.js';
@@ -35,10 +34,6 @@ function App() {
       dispatch(fetchFavorites({ email }));
     }
   }, [dispatch, email, isLoggedIn]);
-
-  useEffect(() => {
-    checkAuthFirebase();
-  });
 
   return (
     <>
