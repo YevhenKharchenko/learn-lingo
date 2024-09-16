@@ -14,7 +14,7 @@
   padding: 0 128px;
   position: relative;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     padding: 0 16px;
   }
 }
@@ -39,7 +39,7 @@
 .menuBtn {
   display: none;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     display: flex;
   }
 }
