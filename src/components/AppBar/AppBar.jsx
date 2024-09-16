@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { selectIsLoggedIn } from '../../redux/selectors.js';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import Container from '../../shared/components/Container/Container.jsx';
 import Navigation from '../Navigation/Navigation.jsx';
 import AuthNav from '../AuthNav/AuthNav.jsx';

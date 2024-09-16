@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsFavorite, selectIsLoggedIn, selectUserEmail } from '../../redux/selectors.js';
+import { selectIsFavorite, selectIsLoggedIn, selectUserEmail } from '../../redux/auth/selectors.js';
 import { addTeacherToFavorite, removeTeacherFromFavorite } from '../../redux/auth/operations.js';
 import sprite from '../../assets/icons/sprite.svg';
 import s from './LikeButton.module.scss';

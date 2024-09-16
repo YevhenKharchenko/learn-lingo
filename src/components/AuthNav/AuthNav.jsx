@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { useModal } from '../../hooks/useModal.jsx';
-import { selectIsRefreshing, selectUserName } from '../../redux/selectors.js';
+import { selectIsRefreshing, selectUserName } from '../../redux/auth/selectors.js';
 import { logoutUser } from '../../redux/auth/operations.js';
 import LoginForm from '../LoginForm/LoginForm.jsx';
 import RegisterForm from '../RegisterForm/RegisterForm.jsx';

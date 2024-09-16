@@ -7,7 +7,7 @@ import {
   selectHasMore,
   selectIsLoading,
   selectLastKey,
-} from '../../redux/selectors.js';
+} from '../../redux/teachers/selectors.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import Button from '../../shared/components/Button/Button.jsx';

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-import { selectFilteredFavorites, selectFilters } from '../../redux/selectors.js';
+import { selectFilteredFavorites } from '../../redux/auth/selectors.js';
+import { selectFilters } from '../../redux/teachers/selectors.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import Button from '../../shared/components/Button/Button.jsx';

@@ -11,6 +11,7 @@ export const selectStyles = {
     fontSize: '18px',
     lineHeight: '1.11',
     color: '#121417',
+    cursor: 'pointer',
     indicatorSeparator: () => ({ display: 'none' }),
   }),
   option: provided => ({

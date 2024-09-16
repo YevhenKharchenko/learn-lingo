@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { loginValidationSchema } from '../../validation/loginValidationSchema.js';
 import { loginUser } from '../../redux/auth/operations.js';
-import { selectIsRefreshing } from '../../redux/selectors.js';
+import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 import Input from '../../shared/components/Input/Input.jsx';
 import Loader from '../../shared/components/Loader/Loader.jsx';
 import Button from '../../shared/components/Button/Button.jsx';

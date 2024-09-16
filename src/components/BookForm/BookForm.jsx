@@ -21,7 +21,6 @@ const BookForm = ({ closeModal }) => {
   });
 
   const onSubmit = data => {
-    console.log(data);
     reset();
     closeModal();
     toast.success(
