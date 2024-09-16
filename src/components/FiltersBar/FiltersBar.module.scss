@@ -2,6 +2,10 @@
   display: flex;
   gap: 20px;
   margin-bottom: 32px;
+
+  @media (max-width: 1440px) {
+    flex-direction: column;
+  }
 }
 
 .selectLabel {

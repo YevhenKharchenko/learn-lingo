@@ -33,7 +33,7 @@ const HomePage = () => {
           <div>
             <picture>
               <source srcSet={`${mac} 1x, ${mac2x} 2x`} />
-              <img className="nav-img" src={mac} alt="Girl with laptop" width="568" height="530" />
+              <img className="heroImg" src={mac} alt="Girl with laptop" width="568" height="530" />
             </picture>
           </div>
         </section>

@@ -12,6 +12,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 128px;
+  position: relative;
+
+  @media (max-width: 1440px) {
+    padding: 0 16px;
+  }
 }
 
 .logo {
@@ -29,4 +34,17 @@
 .scrolled {
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.menuBtn {
+  display: none;
+
+  @media (max-width: 1440px) {
+    display: flex;
+  }
+}
+
+.menuIcon {
+  fill: #111;
+  stroke: #111;
 }

@@ -11,6 +11,10 @@
   outline: none;
   padding: 16px 18px;
 
+  @media (max-width: 1440px) {
+    width: auto;
+  }
+
   &::placeholder {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;

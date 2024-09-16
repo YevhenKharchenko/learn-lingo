@@ -1,13 +1,31 @@
 .hero {
   display: flex;
   gap: 24px;
+
+  display: grid;
+  grid-template-columns: 720px 568px;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 100%;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
 }
 
 .heroWrapper {
   padding: 98px 64px;
   background-color: #f8f8f8;
   border-radius: 30px;
-  flex-grow: 1;
+  // flex-grow: 1;
+  max-width: 100%;
+
+  @media (max-width: 1440px) {
+    max-width: 568px;
+    padding: 48px 32px;
+  }
 }
 
 .title {
@@ -18,7 +36,7 @@
   letter-spacing: -0.02em;
   color: #121417;
   margin-bottom: 32px;
-  width: 548px;
+  max-width: 548px;
 }
 
 .langSpan {
@@ -35,15 +53,34 @@
   letter-spacing: -0.02em;
   color: #121417;
   margin-bottom: 64px;
-  width: 471px;
+  max-width: 471px;
 }
 
 .startBtn {
   width: 267px;
+
+  @media (max-width: 1440px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.heroImg {
+  width: 568px;
+  height: 530px;
+
+  @media (max-width: 1440px) {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .advantages {
   padding-top: 24px;
+
+  @media (max-width: 1440px) {
+    width: 100%;
+  }
 }
 
 .advantagesList {
@@ -53,7 +90,17 @@
   justify-content: center;
   align-items: center;
   padding: 40px 0;
-  gap: 100px;
+  // gap: 100px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1440px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
+    gap: 40px;
+  }
 }
 
 .advItem {
