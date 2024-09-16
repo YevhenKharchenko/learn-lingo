@@ -1,12 +1,10 @@
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { lazy, useEffect, useRef } from 'react';
 import { useBodyBackgroundColor } from './hooks/useBodyBackgroundColor.jsx';
 import { PrivateRoute } from './components/PrivateRoute.jsx';
-import { selectIsLoggedIn, selectUserEmail } from './redux/auth/selectors.js';
 import { fetchTeachers } from './redux/teachers/operations.js';
-import { fetchFavorites } from './redux/auth/operations.js';
 
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
@@ -17,8 +15,6 @@ const FavoritePage = lazy(() => import('./pages/FavoritePage/FavoritePage.jsx'))
 function App() {
   const dispatch = useDispatch();
   const isFirstRender = useRef(true);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const email = useSelector(selectUserEmail);
 
   useBodyBackgroundColor();
 
@@ -28,12 +24,6 @@ function App() {
       isFirstRender.current = false;
     }
   }, [dispatch]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(fetchFavorites({ email }));
-    }
-  }, [dispatch, email, isLoggedIn]);
 
   return (
     <>

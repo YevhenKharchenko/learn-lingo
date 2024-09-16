@@ -43,7 +43,7 @@ const AppBar = () => {
         <Navigation isLoggedIn={isLoggedIn} />
         <AuthNav isLoggedIn={isLoggedIn} />
         <button className={s.menuBtn} type="button" onClick={handleMenuBtnClick}>
-          <svg className={s.menuIcon} width="34" height="34">
+          <svg className={s.menuIcon} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-${menuIsOpen ? 'x' : 'menu'}`}></use>
           </svg>
         </button>

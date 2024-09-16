@@ -4,6 +4,10 @@
   border-radius: 30px;
   max-width: 600px;
   position: relative;
+
+  @media (max-width: 1439px) {
+    padding: 32px;
+  }
 }
 
 .closeBtn {

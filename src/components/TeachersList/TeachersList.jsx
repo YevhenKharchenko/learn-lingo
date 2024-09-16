@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { fetchAllTeachers, fetchTeachers } from '../../redux/teachers/operations.js';
+import { fetchFavorites } from '../../redux/auth/operations.js';
 import {
   selectFilteredTeachers,
   selectFilters,
@@ -8,6 +9,7 @@ import {
   selectIsLoading,
   selectLastKey,
 } from '../../redux/teachers/selectors.js';
+import { selectIsLoggedIn, selectUserEmail } from '../../redux/auth/selectors.js';
 import { resetFilters } from '../../redux/teachers/slice.js';
 import TeachersItem from '../TeachersItem/TeachersItem.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
@@ -23,10 +25,18 @@ const TeachersList = () => {
   const filters = useSelector(selectFilters);
   const hasFilters = Boolean(filters.language || filters.level || filters.price);
   const filteredTeachersList = useSelector(selectFilteredTeachers);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const email = useSelector(selectUserEmail);
 
   useEffect(() => {
     dispatch(resetFilters());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(fetchFavorites({ email }));
+    }
+  }, [dispatch, email, isLoggedIn]);
 
   const handleLoadBtnClick = async () => {
     if (hasFilters) {

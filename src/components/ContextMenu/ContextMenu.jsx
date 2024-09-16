@@ -1,16 +1,16 @@
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import s from './ContextMenu.module.scss';
-import Button from '../../shared/components/Button/Button.jsx';
-import Loader from '../../shared/components/Loader/Loader.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from '../../hooks/useModal.jsx';
 import { useCallback } from 'react';
-import LoginForm from '../LoginForm/LoginForm.jsx';
-import RegisterForm from '../RegisterForm/RegisterForm.jsx';
+import { useModal } from '../../hooks/useModal.jsx';
 import { logoutUser } from '../../redux/auth/operations.js';
 import { selectIsRefreshing, selectUserName } from '../../redux/auth/selectors.js';
+import LoginForm from '../LoginForm/LoginForm.jsx';
+import RegisterForm from '../RegisterForm/RegisterForm.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
+import Loader from '../../shared/components/Loader/Loader.jsx';
 import sprite from '../../assets/icons/sprite.svg';
+import s from './ContextMenu.module.scss';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.active);
