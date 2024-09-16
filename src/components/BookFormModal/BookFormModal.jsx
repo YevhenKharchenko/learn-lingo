@@ -22,7 +22,6 @@ const BookFormModal = ({ avatar, name, closeModal }) => {
           <p className={s.teacherName}>{name}</p>
         </div>
       </div>
-      <h3 className={s.formSubtitle}>What is your main reason for learning English?</h3>
       <BookForm closeModal={closeModal} />
     </div>
   );

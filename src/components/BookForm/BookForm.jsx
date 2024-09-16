@@ -34,7 +34,7 @@ const BookForm = ({ closeModal }) => {
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={s.fieldset}>
-        <legend className={s.legend}></legend>
+        <legend className={s.legend}>What is your main reason for learning English?</legend>
         <div className={s.radioWrapper}>
           <label className={s.radioLabel} htmlFor="career">
             <input
