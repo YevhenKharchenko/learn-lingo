@@ -8,6 +8,8 @@ export const selectLastKey = state => state.teachers?.lastKey;
 
 export const selectHasMore = state => state.teachers?.hasMore;
 
+export const selectHasFetched = state => state.teachers?.hasFetched;
+
 export const selectFilters = state => state.teachers?.filters;
 
 export const selectFilteredTeachers = createSelector(

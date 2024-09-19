@@ -19,6 +19,7 @@ const teachersSlice = createSlice({
     error: null,
     lastKey: null,
     hasMore: true,
+    hasFetched: false,
     filters: {
       language: null,
       level: null,
@@ -46,6 +47,7 @@ const teachersSlice = createSlice({
         state.items = [...state.items, ...action.payload.teachers];
         state.lastKey = action.payload.lastKey;
         state.hasMore = action.payload.teachers.length > 3;
+        state.hasFetched = true;
       })
       .addCase(fetchTeachers.rejected, handleError)
       .addCase(fetchAllTeachers.pending, handleRefreshing)

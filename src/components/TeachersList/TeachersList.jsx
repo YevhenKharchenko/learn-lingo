@@ -5,6 +5,7 @@ import { fetchFavorites } from '../../redux/auth/operations.js';
 import {
   selectFilteredTeachers,
   selectFilters,
+  selectHasFetched,
   selectHasMore,
   selectIsLoading,
   selectLastKey,
@@ -26,11 +27,20 @@ const TeachersList = () => {
   const hasFilters = Boolean(filters.language || filters.level || filters.price);
   const filteredTeachersList = useSelector(selectFilteredTeachers);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const hasFetched = useSelector(selectHasFetched);
   const email = useSelector(selectUserEmail);
+  const isFirstRender = useRef(false);
 
   useEffect(() => {
     dispatch(resetFilters());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isFirstRender.current && !hasFetched) {
+      dispatch(fetchTeachers());
+      isFirstRender.current = true;
+    }
+  }, [dispatch, hasFetched]);
 
   useEffect(() => {
     if (isLoggedIn) {
