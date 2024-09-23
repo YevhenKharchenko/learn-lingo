@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import DocumentTitle from '../../components/DocumentTitle.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
-import mac2x from '../../assets/images/mac.png';
+import mac2x from '../../assets/images/mac@2x.png';
 import mac from '../../assets/images/mac.png';
 import s from './HomePage.module.scss';
 
