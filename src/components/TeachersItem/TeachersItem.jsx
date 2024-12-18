@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal.jsx';
 import { addComma } from '../../utils/addComma.js';
 import BookFormModal from '../BookFormModal/BookFormModal.jsx';
@@ -32,6 +32,10 @@ const TeachersItem = ({ data }) => {
   const handleReadMoreBtnClick = () => {
     setIsShowMore(true);
   };
+
+  useEffect(() => {
+    setIsShowMore(false);
+  }, [data]);
 
   return (
     <div className={s.wrapper}>
